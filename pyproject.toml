@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "yt-transcriber"
+version = "0.1.0"
+description = ""
+authors = ["Aman K Shihab <amanshihab276@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytube = "^15.0.0"
+faster-whisper = "^1.0.1"
+ruff = "^0.3.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
