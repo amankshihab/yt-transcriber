@@ -7,8 +7,8 @@ from faster_whisper import WhisperModel
 class Transcriber:
     def __init__(
         self,
-        audio_folder: str,
-        model_path: str,
+        audio_folder: str | Path,
+        model_path: str | Path,
         device: str,
     ):
         self.audio_folder = audio_folder
