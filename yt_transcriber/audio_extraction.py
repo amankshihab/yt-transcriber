@@ -28,11 +28,11 @@ class AudioExtractor:
         url : str
             The url to the youtube video of which the audio is to be downloaded.
 
-        filename : str, optional
+        filename : str | Path, optional
             The filename for the audio file to be downloaded.
         """
         yt = YouTube(url)
         stream = yt.streams.filter(only_audio=True)
         _filename = filename if filename is not None else f"{yt._title} audio"
         stream[0].download(output_path=self.parent_folder, filename=_filename + ".mp3")
-        return self.parent_folder + '/' + _filename + ".mp3"
+        return self.parent_folder / f"{_filename}.mp3"
