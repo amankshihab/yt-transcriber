@@ -15,6 +15,22 @@ class Transcriber:
         self.model_path = model_path
         self.device = device
 
+    @property
+    def audio_folder(self):
+        return self._audio_folder
+
+    @audio_folder.setter
+    def audio_folder(self, folder_loc: str | Path):
+        self._audio_folder = Path(folder_loc).absolute()
+
+    @property
+    def model_path(self):
+        return self._model_path
+
+    @model_path.setter
+    def model_path(self, path: str | Path):
+        self._model_path = Path(path).absolute()
+
     def transcribe(self, urls: str | list[str]) -> list[str]:
         """
         Transcribes the videos in the url list
