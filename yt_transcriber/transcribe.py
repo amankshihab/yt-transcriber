@@ -1,4 +1,5 @@
 from .audio_extraction import AudioExtractor
+from pathlib import Path
 
 from faster_whisper import WhisperModel
 
