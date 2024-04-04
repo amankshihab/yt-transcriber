@@ -18,7 +18,7 @@ class Transcriber:
 
     @property
     def audio_folder(self):
-        return self._audio_folder
+        return str(self._audio_folder)
 
     @audio_folder.setter
     def audio_folder(self, folder_loc: str | Path):
@@ -26,7 +26,7 @@ class Transcriber:
 
     @property
     def model_path(self):
-        return self._model_path
+        return str(self._model_path)
 
     @model_path.setter
     def model_path(self, path: str | Path):
@@ -54,7 +54,7 @@ class Transcriber:
         for url in _urls:
             transcript = ""
             print(f"Fetching audio for {url}..")
-            audio_file = self.audio_extractor.download_audio_from_yt(url).absolute()
+            audio_file = str(self.audio_extractor.download_audio_from_yt(url).absolute())
             print(f"Transcribing {audio_file}")
             segments, _ = model.transcribe(audio_file)
             print("Transcription complete.")
