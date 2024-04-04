@@ -13,9 +13,9 @@ class AudioExtractor:
         Path to the parent folder that contains the extracted audio files.
     """
 
-    def __init__(self, parent_folder: str):
-        assert parent_folder is not None, "Please provide a path to parent folder."
-        self.parent_folder = parent_folder
+    def __init__(self, parent_folder: str | Path):
+        if parent_folder is None:
+            raise ValueError("Please provide a path to parent folder.")
 
     def download_audio_from_yt(self, url: str, filename: str | None = None) -> str:
         """Downloads the audio from youtube videos to the directory specified.
