@@ -17,7 +17,9 @@ class AudioExtractor:
         if parent_folder is None:
             raise ValueError("Please provide a path to parent folder.")
 
-    def download_audio_from_yt(self, url: str, filename: str | None = None) -> str:
+        self.parent_folder = Path(parent_folder)
+
+    def download_audio_from_yt(self, url: str, filename: Optional[str] = None) -> Path:
         """Downloads the audio from youtube videos to the directory specified.
         Optionally, the filename can be changed.
 
