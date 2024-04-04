@@ -54,7 +54,7 @@ class Transcriber:
         for url in _urls:
             transcript = ""
             print(f"Fetching audio for {url}..")
-            audio_file = self.audio_extractor.download_audio_from_yt(url)
+            audio_file = self.audio_extractor.download_audio_from_yt(url).absolute()
             print(f"Transcribing {audio_file}")
             segments, _ = model.transcribe(audio_file)
             print("Transcription complete.")
