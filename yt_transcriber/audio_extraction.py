@@ -9,7 +9,7 @@ class AudioExtractor:
 
     Attributes
     ----------
-    parent_folder : str
+    parent_folder : str | Path
         Path to the parent folder that contains the extracted audio files.
     """
 
