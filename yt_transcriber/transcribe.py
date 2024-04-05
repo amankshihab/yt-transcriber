@@ -1,10 +1,22 @@
-from .audio_extraction import AudioExtractor
 from pathlib import Path
 
 from faster_whisper import WhisperModel
 
+from .audio_extraction import AudioExtractor
+
 
 class Transcriber:
+    """Class that encapsulates the transcription functionality
+
+    Attributes
+    ----------
+    audio_folder: str | Path
+        Path to where the audio files need to be stored
+    model_path: str | Path
+        Path to where the WhisperModel binary for use in transcription.
+    device: str
+        The hardware device name to be used while transcribing the video.
+    """
     def __init__(
         self,
         audio_folder: str | Path,
@@ -12,7 +24,7 @@ class Transcriber:
         device: str,
     ):
         self.audio_folder = audio_folder
-        self.audio_extractor = AudioExtractor(self.audio_folder)
+        self._audio_extractor = AudioExtractor(self.audio_folder)
         self.model_path = model_path
         self.device = device
 
@@ -54,7 +66,7 @@ class Transcriber:
         for url in _urls:
             transcript = ""
             print(f"Fetching audio for {url}..")
-            audio_file = str(self.audio_extractor.download_audio_from_yt(url).absolute())
+            audio_file = str(self._audio_extractor.download_audio_from_yt(url).absolute())
             print(f"Transcribing {audio_file}")
             segments, _ = model.transcribe(audio_file)
             print("Transcription complete.")
